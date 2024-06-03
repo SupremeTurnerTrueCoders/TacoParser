@@ -63,16 +63,15 @@ namespace LoggingKata
 
                 var locA = locations[i];
                 // TODO: Once you have locA, create a new Coordinate object called `corA` with your locA's latitude and longitude.
-                var corA = new GeoCoordinate();
-                corA.Latitude = locA.Location.Latitude;
-                corA.Longitude = locA.Location.Longitude;
+                var corA = new GeoCoordinate(locA.Location.Latitude, locA.Location.Longitude);
+                
                 // SECOND FOR LOOP -
 
                 for (int j = 0; j < locations.Length; j++)
                 {
                     var locB = locations[j];
-                    var corB = new GeoCoordinate();
-                    corB.Latitude = locB.Location.Latitude;
+                    var corB = new GeoCoordinate(locB.Location.Latitude, locB.Location.Longitude);
+                    
 
 
                     if (corA.GetDistanceTo(corB) > distance)
@@ -83,7 +82,7 @@ namespace LoggingKata
                     }
 
                    
-                   logger.LogInfo($"{tacoBell1.Name} and {tacoBell2.Name} are the farthest apart");
+                   
                 }
                 // TODO: Now, Inside the scope of your first loop, create another loop to iterate through locations again.
                 // This allows you to pick a "destination" location for each "origin" location from the first loop. 
@@ -123,6 +122,7 @@ namespace LoggingKata
             // Display these two Taco Bell locations to the console.
 
 
+            logger.LogInfo($"{tacoBell1.Name} and {tacoBell2.Name} are the farthest apart");
 
         }
     }
